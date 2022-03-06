@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Linux - Shell Skills | 逢山开路，遇水架桥。</title>
+    <meta name="generator" content="VuePress 1.9.7">
+    
+    <meta name="description" content="
+查看shell 脚本 manual
+
+man sh 
+man dash
+man ksh
+调试选项
+
+-v (verbose) - 告诉 Shell 读取脚本时显示所有行，激活详细模式。
+-n（noexec 或 no ecxecution 简称） - 指示 Shell 读取所有命令然而不执行它们，这个选项激活语法检查模式。
+-x ...">
+    
+    <link rel="preload" href="/assets/css/0.styles.a81ed891.css" as="style"><link rel="preload" href="/assets/js/app.da2b1be3.js" as="script"><link rel="preload" href="/assets/js/6.98ca7309.js" as="script"><link rel="preload" href="/assets/js/11.3563294a.js" as="script"><link rel="preload" href="/assets/js/14.6e0c7808.js" as="script"><link rel="prefetch" href="/assets/js/10.09a03a3a.js"><link rel="prefetch" href="/assets/js/12.fa6c3de2.js"><link rel="prefetch" href="/assets/js/13.e608a33f.js"><link rel="prefetch" href="/assets/js/3.2d96c776.js"><link rel="prefetch" href="/assets/js/4.dba939aa.js"><link rel="prefetch" href="/assets/js/5.5d6780e3.js"><link rel="prefetch" href="/assets/js/7.04d4b705.js"><link rel="prefetch" href="/assets/js/8.e7cb864d.js"><link rel="prefetch" href="/assets/js/9.29dca1b9.js"><link rel="prefetch" href="/assets/js/vuejs-paginate.90d888b3.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.a81ed891.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div id="vuepress-theme-blog__global-layout"><section id="header-wrapper"><header id="header"><div class="header-wrapper"><div class="title"><a href="/" class="nav-link home-link">逢山开路，遇水架桥。 </a></div> <div class="header-right-wrap"><ul class="nav"><li class="nav-item"><a href="/" class="nav-link">Home</a></li><li class="nav-item"><a href="/tag/" class="nav-link">Tags</a></li></ul> <div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <!----></div></div></header></section> <div id="mobile-header"><div class="mobile-header-bar"><div class="mobile-header-title"><a href="/" class="nav-link mobile-home-link">逢山开路，遇水架桥。 </a> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg></div> <div class="mobile-menu-wrapper"><hr class="menu-divider"> <ul class="mobile-nav"><li class="mobile-nav-item"><a href="/" class="nav-link">Home</a></li><li class="mobile-nav-item"><a href="/tag/" class="nav-link">Tags</a></li> <li class="mobile-nav-item"><!----></li></ul></div></div></div> <div class="content-wrapper"><div><div class="content__default"><h2 id="_1-use-shell-调试选项"><a href="#_1-use-shell-调试选项" class="header-anchor">#</a> 1. use shell 调试选项</h2> <h3 id="查看shell-脚本-manual"><a href="#查看shell-脚本-manual" class="header-anchor">#</a> 查看shell 脚本 manual</h3> <ul><li><code>man sh</code></li> <li><code>man dash</code></li> <li><code>man ksh</code></li></ul> <h3 id="调试选项"><a href="#调试选项" class="header-anchor">#</a> 调试选项</h3> <ul><li><code>-v</code> (verbose) - 告诉 Shell 读取脚本时显示所有行，激活详细模式。</li> <li><code>-n</code>（noexec 或 no ecxecution 简称） - 指示 Shell 读取所有命令然而不执行它们，这个选项激活语法检查模式。</li> <li><code>-x</code> （xtrace 或 execution trace 简称） - 告诉 Shell 在终端显示所有执行的命令和它们的参数。 这个选项是启用 Shell 跟踪模式。</li></ul> <h1 id="shell-调试三种方式"><a href="#shell-调试三种方式" class="header-anchor">#</a> shell 调试三种方式</h1> <h3 id="_1-改变shell脚本首行"><a href="#_1-改变shell脚本首行" class="header-anchor">#</a> 1. 改变shell脚本首行</h3> <blockquote><p><code>#!/bin/sh 选项</code></p></blockquote> <p>其中，<code>选项</code>可以是上面提到的一个或多个调试选项。</p> <h3 id="_2-调用shell调试选项"><a href="#_2-调用shell调试选项" class="header-anchor">#</a> 2. 调用shell调试选项</h3> <p>打开整个脚本调试</p> <div class="language-bash extra-class"><pre class="language-bash"><code>$ shell 选项  <span class="token builtin class-name">command</span>  参数1 <span class="token punctuation">..</span>. 参数N
+</code></pre></div><p>示例：</p> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token function">bash</span> -x my.sh 参数1 <span class="token punctuation">..</span>. 参数N
+</code></pre></div><h3 id="_3-使用shell内置命令set"><a href="#_3-使用shell内置命令set" class="header-anchor">#</a> 3. 使用shell内置命令<code>set</code></h3> <p>启用调试模式：</p> <blockquote><p>set -选项</p></blockquote> <p>关闭调试模式:</p> <blockquote><p>set +选项</p></blockquote> <p>示例：</p> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token shebang important">#!/bin/bash</span>
+<span class="token builtin class-name">typeset</span> <span class="token assign-left variable">SH_NAME</span><span class="token operator">=</span><span class="token variable"><span class="token variable">$(</span><span class="token builtin class-name">echo</span> $0<span class="token operator">|</span><span class="token function">xargs</span> -i <span class="token function">basename</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token variable">)</span></span>
+
+<span class="token keyword">function</span> <span class="token function-name function">foo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token builtin class-name">set</span> -x <span class="token comment"># -v or -n </span>
+    <span class="token builtin class-name">echo</span> show shell name :<span class="token punctuation">[</span><span class="token variable">${SH_NAME}</span><span class="token punctuation">]</span>
+    <span class="token builtin class-name">set</span> +x <span class="token comment"># +v or +n</span>
+<span class="token punctuation">}</span>
+
+foo<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+</code></pre></div><h2 id="bashdb-tools"><a href="#bashdb-tools" class="header-anchor">#</a> bashdb tools</h2> <h2 id=""><a href="#" class="header-anchor">#</a></h2></div></div></div> <footer class="footer" data-v-3d9deeb8><div class="footer-left-wrap" data-v-3d9deeb8><ul class="contact" data-v-3d9deeb8><li class="contact-item" data-v-3d9deeb8><a href="https://github.com/vuejs/vuepress" target="_blank" rel="noopener noreferrer" class="nav-link external" data-v-3d9deeb8><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-github" data-v-3d9deeb8><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22" data-v-3d9deeb8></path></svg>
+          
+        </a></li><li class="contact-item" data-v-3d9deeb8><a href="https://github.com/vuejs/vuepress" target="_blank" rel="noopener noreferrer" class="nav-link external" data-v-3d9deeb8><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-twitter" data-v-3d9deeb8><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z" data-v-3d9deeb8></path></svg>
+          
+        </a></li></ul></div> <div class="footer-right-wrap" data-v-3d9deeb8><ul class="copyright" data-v-3d9deeb8></ul></div></footer></div><div class="global-ui"><!----></div></div>
+    <script src="/assets/js/app.da2b1be3.js" defer></script><script src="/assets/js/6.98ca7309.js" defer></script><script src="/assets/js/11.3563294a.js" defer></script><script src="/assets/js/14.6e0c7808.js" defer></script>
+  </body>
+</html>
